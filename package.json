@@ -12,5 +12,8 @@
 },
 "dependencies": {
    "express": "~4.10.2"
+},
+"scripts": {
+   "test": "jshint --verbose webbbs.js"
 }
 }
