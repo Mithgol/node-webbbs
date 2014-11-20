@@ -18,6 +18,8 @@ You may visit https://github.com/Mithgol/node-webbbs#readme occasionally to rea
 
 ## Testing the WebBBS module
 
+[![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)
+
 It is necessary to install [JSHint](http://jshint.com/) for testing.
 
 * You may install JSHint globally (`npm install jshint -g`) or locally (`npm install jshint` in the directory of the WebBBS module).
