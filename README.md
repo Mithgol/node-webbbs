@@ -16,7 +16,26 @@ The npm package does not contain the tests, they're published on GitHub only.
 
 You may visit https://github.com/Mithgol/node-webbbs#readme occasionally to read the latest `README` because the package's version is not planned to grow after changes when they happen in `README` only. (And `npm publish --force` is [forbidden](http://blog.npmjs.org/post/77758351673/no-more-npm-publish-f) nowadays.)
 
-## Testing the WebBBS module
+## Using the WebBBS module
+
+When you `require()` the installed module, you get a function that returns an Express.js application that provides a **WebBBS** interface to echomail areas of Fidonet.
+
+You may serve that application on a route (path) of your Express-based web server:
+
+```js
+var WebBBS = require('webbbs')(options_for_WebBBS);
+app.use('/webbbs', WebBBS);
+```
+
+You may also use the [`vhost`](https://github.com/expressjs/vhost) module to serve that application on a virtual host of your Express-based web server:
+
+```js
+var vhost = require('vhost');
+var WebBBS = require('webbbs')(options_for_WebBBS);
+app.use(vhost('webbbs.example.org', WebBBS));
+```
+
+## Testing the WebBBS module
 
 [![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)
 
