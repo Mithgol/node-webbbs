@@ -11,7 +11,8 @@
    "url": "https://github.com/Mithgol/node-webbbs.git"
 },
 "dependencies": {
-   "express": "~4.10.2"
+   "express": "~4.10.2",
+   "express-handlebars": "~1.1.0"
 },
 "scripts": {
    "test": "jshint --verbose webbbs.js"
