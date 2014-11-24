@@ -47,4 +47,8 @@ After that you may run `npm test` (in the directory of the WebBBS module). O
 
 ## License
 
-MIT license (see the `LICENSE` file).
+MIT license (see the `LICENSE` file), with the following exceptions:
+
+* Fonts in the `paratype` directory are published [by ParaType](http://www.paratype.com/public/) on the terms of [ParaType Free Font Licensing Agreement](http://www.paratype.com/public/pt_openlicense_eng.asp). (See the `PT Free Font License*.txt` files in the same folder.)
+
+* Node.js modules (installed in the `node_modules` directory) belong to their respective owners.
