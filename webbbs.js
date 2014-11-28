@@ -1,9 +1,18 @@
 var express = require('express');
 var path = require('path');
+var extend = require('extend');
+var configReader = require('./readconf.js');
 
-module.exports = function(/* options */){
+var defaultsWebBBS = {
+   configFilePath: path.join(__dirname, 'webbbs.conf')
+};
+
+module.exports = function(optionsWebBBS){
    var app = express();
    var exhandler = require('express-handlebars'); // tribute to 「Asura Cryin'」
+
+   var options = extend({}, defaultsWebBBS, optionsWebBBS);
+   /*var setupBBS =*/ configReader(options);
 
    // Handlebars!
    var dirNodeViews = path.join(__dirname, 'node_views');
