@@ -25,7 +25,6 @@ module.exports = function(optionsWebBBS){
    app.set('view engine', 'handlebars');
 
    app.get('/', function(req, res){
-      /*jshint unused:vars */
       res.type('text/plain');
       res.send([
          'You have successfully reached ',
