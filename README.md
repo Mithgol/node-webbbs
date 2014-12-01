@@ -35,6 +35,10 @@ var WebBBS = require('webbbs')(options_for_WebBBS);
 app.use(vhost('webbbs.example.org', WebBBS));
 ```
 
+## Configuration
+
+The configuration file's path is given as `options_for_WebBBS.configFilePath` property. (By default it is the file `webbbs.conf` in the directory of the WebBBS module.)
+
 ## Testing the WebBBS module
 
 [![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)
