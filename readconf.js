@@ -1,3 +1,4 @@
+var nodelist = require('nodelist');
 var simteconf = require('simteconf');
 
 module.exports = function(configOptions){
@@ -52,6 +53,13 @@ module.exports = function(configOptions){
          'EchoArea'
       ]
    });
+   // Read nodelist from ZIP:
+   try {
+      var ZIPNodelist = configBBS.last('ZIPNodelist');
+      setup.nodelist = nodelist(ZIPNodelist, { zip: true });
+   } catch(e) {
+      setup.nodelist = null;
+   }
 
    return setup;
 };
