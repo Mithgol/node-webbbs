@@ -70,6 +70,11 @@ The following configuration options are supported (in arbitrary order):
 
 * `ZIPNodelist` — path to a ZIP-packed nodelist.
 
+* `InterfaceLanguage` — the default language of the WebBBS's interface until it is changed by the individual user's settings. Corresponds to a name of a subdirectory inside the `node_views` directory. The following values are supported:
+   * `en` — international English. This is the default value.
+   * `ru` — modern Russian.
+   * `ru-petr1708` — imperial Russian. (Defined by [IANA language subtag registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) as “Russian orthography from the Petrine orthographic reforms of 1708 to the 1917 orthographic reform”.)
+
 ## Testing the WebBBS module
 
 [![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)

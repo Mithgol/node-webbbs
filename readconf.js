@@ -7,6 +7,9 @@ module.exports = function(configOptions){
       skipNames: ['//', '#']
    });
 
+   // Read WebBBS-specific settings:
+   var encodingGED = configBBS.last('InterfaceLanguage') || 'en';
+
    // Read GoldED settings:
    var encodingGED = configBBS.last('EncodingGoldED') || 'utf8';
    var confGED = simteconf(configBBS.last('ConfigGoldED'), {
