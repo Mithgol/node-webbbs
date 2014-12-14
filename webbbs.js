@@ -24,7 +24,7 @@ module.exports = function(optionsWebBBS){
    app.set('views', dirNodeViews);
    app.set('view engine', 'handlebars');
 
-   app.get(/^\/rss/, function(req, res){
+   app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
       res.type('text/plain');
       res.send([
          'You have successfully reached ',
