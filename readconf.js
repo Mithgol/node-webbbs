@@ -8,7 +8,7 @@ module.exports = function(configOptions){
    });
 
    // Read WebBBS-specific settings:
-   var encodingGED = configBBS.last('InterfaceLanguage') || 'en';
+   setup.interfaceLanguage = configBBS.last('InterfaceLanguage') || 'en';
 
    // Read GoldED settings:
    var encodingGED = configBBS.last('EncodingGoldED') || 'utf8';
