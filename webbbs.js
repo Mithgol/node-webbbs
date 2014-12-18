@@ -15,7 +15,9 @@ module.exports = function(optionsWebBBS){
    /*var setupBBS =*/ configReader(options);
 
    // Handlebars!
-   var dirNodeViews = path.join(__dirname, 'node_views');
+   var dirNodeViews = path.join(
+      __dirname, 'node_views', options.interfaceLanguage
+   );
    app.engine('handlebars', exhandler({
       defaultLayout: 'default',
       layoutsDir:   path.join(dirNodeViews, 'layouts'),
@@ -23,6 +25,32 @@ module.exports = function(optionsWebBBS){
    }));
    app.set('views', dirNodeViews);
    app.set('view engine', 'handlebars');
+
+   // serve special root files
+   var serveSpecialRootFile = function(specialRootFileItem){
+      var rootOpts = {
+         maxAge: 1000 * 60 * 60 * 1, // 1 hour TTL in cache
+         root: path.join(__dirname, specialRootFileItem.realPath)
+      };
+      app.get('/' + specialRootFileItem.filename, function(req, res){
+         res.sendFile(specialRootFileItem.filename, rootOpts, function(err){
+            if( err ){
+               console.log(
+                  'Root special file error: ' + specialRootFileItem.filename
+               );
+               console.log(err);
+               res.status(err.status).end();
+            }
+         });
+      });
+   };
+   [
+      { filename: 'bootstrap.min.css', realPath: 'bootstrap/css' },
+      { filename: 'bootstrap.min.js', realPath: 'bootstrap/js' },
+      { filename: 'jquery.min.js', realPath: 'node_modules/jquery/dist' }
+   ].forEach(function(someSpecialRootFileItem){
+      serveSpecialRootFile(someSpecialRootFileItem);
+   });
 
    app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
       res.type('text/plain');
