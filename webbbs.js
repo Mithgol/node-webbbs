@@ -47,7 +47,11 @@ module.exports = function(optionsWebBBS){
    [
       { filename: 'bootstrap.min.css', realPath: 'bootstrap/css' },
       { filename: 'bootstrap.min.js', realPath: 'bootstrap/js' },
-      { filename: 'jquery.min.js', realPath: 'node_modules/jquery/dist' }
+      { filename: 'jquery.min.js', realPath: 'node_modules/jquery/dist' },
+      {
+         filename: 'font-awesome.min.css',
+         realPath: 'node_modules/font-awesome/css'
+      }
    ].forEach(function(someSpecialRootFileItem){
       serveSpecialRootFile(someSpecialRootFileItem);
    });
