@@ -7,16 +7,22 @@ var defaultsWebBBS = {
    configFilePath: path.join(__dirname, 'webbbs.conf')
 };
 
+var getFullQuery = function(URL){
+   var markIndex = URL.indexOf('?');
+   if( markIndex < 0 ) return '';
+   return URL.slice(markIndex + 1);
+};
+
 module.exports = function(optionsWebBBS){
    var app = express();
    var exhandler = require('express-handlebars'); // tribute to 「Asura Cryin'」
 
    var options = extend({}, defaultsWebBBS, optionsWebBBS);
-   /*var setupBBS =*/ configReader(options);
+   var setupBBS = configReader(options);
 
    // Handlebars!
    var dirNodeViews = path.join(
-      __dirname, 'node_views', options.interfaceLanguage
+      __dirname, 'node_views', setupBBS.interfaceLanguage
    );
    app.engine('handlebars', exhandler({
       defaultLayout: 'default',
@@ -57,7 +63,16 @@ module.exports = function(optionsWebBBS){
    });
 
    app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
-      res.type('text/plain');
+      var FGHI_URL = getFullQuery(req.originalUrl);
+      if( FGHI_URL.indexOf('area') < 0 ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'RSS is provided only for the «area://» URLs.'
+         ].join(''));
+         return;
+      }
+      res.type('text/plain;charset=utf-8');
       res.send([
          'You have successfully reached ',
          'the stub version of the WebBBS RSS generator.'
@@ -65,7 +80,7 @@ module.exports = function(optionsWebBBS){
    });
 
    app.get('/', function(req, res){
-      res.type('text/plain');
+      res.type('text/plain;charset=utf-8');
       res.send([
          'You have successfully reached ',
          'the initial version of the WebBBS application.'
