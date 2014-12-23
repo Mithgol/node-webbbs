@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var extend = require('extend');
+var parseFGHIURL = require('fghi-url');
 var configReader = require('./readconf.js');
 
 var defaultsWebBBS = {
@@ -60,6 +61,23 @@ module.exports = function(optionsWebBBS){
       }
    ].forEach(function(someSpecialRootFileItem){
       serveSpecialRootFile(someSpecialRootFileItem);
+   });
+
+   // parse FGHI URL
+   app.all(/.*/, function(req, res, next){
+      var queryURL = getFullQuery(req.originalUrl);
+      var parsedURL;
+      try {
+         parsedURL = parseFGHIURL(queryURL);
+      } catch(e) {
+         try {
+            parsedURL = parseFGHIURL( decodeURIComponent(queryURL) );
+         } catch(ee) {
+            parsedURL = null;
+         }
+      }
+      res.FGHIURL = parsedURL;
+      next();
    });
 
    app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
