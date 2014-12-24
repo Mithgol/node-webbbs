@@ -54,13 +54,26 @@ module.exports = function(optionsWebBBS){
    [
       { filename: 'bootstrap.min.css', realPath: 'bootstrap/css' },
       { filename: 'bootstrap.min.js', realPath: 'bootstrap/js' },
-      { filename: 'jquery.min.js', realPath: 'node_modules/jquery/dist' },
-      {
-         filename: 'font-awesome.min.css',
-         realPath: 'node_modules/font-awesome/css'
-      }
+      { filename: 'jquery.min.js', realPath: 'node_modules/jquery/dist' }
    ].forEach(function(someSpecialRootFileItem){
       serveSpecialRootFile(someSpecialRootFileItem);
+   });
+
+   // serve special static directories
+   var serveSpecialStaticDir = function(specialStaticDir){
+      var statOps = {
+         index: false,
+         maxAge: 1000 * 60 * 60 * 1 // 1 hour TTL in cache
+      };
+      app.use('/' + specialStaticDir.extraName, express.static(
+         path.join(__dirname, specialStaticDir.intraName),
+         statOps
+      ));
+   };
+   [
+      { extraName: 'awesome', intraName: 'node_modules/font-awesome' }
+   ].forEach(function(staticDirItem){
+      serveSpecialStaticDir(staticDirItem);
    });
 
    // parse FGHI URL
