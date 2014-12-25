@@ -80,13 +80,17 @@ module.exports = function(optionsWebBBS){
    app.all(/.*/, function(req, res, next){
       var queryURL = getFullQuery(req.originalUrl);
       var parsedURL;
-      try {
-         parsedURL = parseFGHIURL(queryURL);
-      } catch(e) {
+      if( queryURL === '' ){
+         parsedURL = null;
+      } else {
          try {
-            parsedURL = parseFGHIURL( decodeURIComponent(queryURL) );
-         } catch(ee) {
-            parsedURL = null;
+            parsedURL = parseFGHIURL(queryURL);
+         } catch(e) {
+            try {
+               parsedURL = parseFGHIURL( decodeURIComponent(queryURL) );
+            } catch(ee) {
+               parsedURL = null;
+            }
          }
       }
       res.FGHIURL = parsedURL;
@@ -94,8 +98,15 @@ module.exports = function(optionsWebBBS){
    });
 
    app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
-      var FGHI_URL = getFullQuery(req.originalUrl);
-      if( FGHI_URL.indexOf('area') < 0 ){
+      if( res.FGHIURL === null ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'Some FGHI URL should be given after «/rss?».'
+         ].join(''));
+         return;
+      }
+      if( res.FGHIURL.scheme !== 'area' ){
          res.type('text/plain;charset=utf-8');
          res.status(404);
          res.send([
