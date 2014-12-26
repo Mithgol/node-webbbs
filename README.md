@@ -75,6 +75,8 @@ The following configuration options are supported (in arbitrary order):
    * `ru` — modern Russian.
    * `ru-petr1708` — imperial Russian. (Defined by [IANA language subtag registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) as “Russian orthography from the Petrine orthographic reforms of 1708 to the 1917 orthographic reform”.)
 
+* `AreaLockFile` — a path to the file which (when present) indicate that the mail bases are being modified by another program (such as echoprocessor, for example). The WebBBS returns `HTTP 503 Service Unavailable` when this file exists.
+
 ## Testing the WebBBS module
 
 [![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)
