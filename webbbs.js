@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var extend = require('extend');
 var parseFGHIURL = require('fghi-url');
@@ -74,6 +75,19 @@ module.exports = function(optionsWebBBS){
       { extraName: 'awesome', intraName: 'node_modules/font-awesome' }
    ].forEach(function(staticDirItem){
       serveSpecialStaticDir(staticDirItem);
+   });
+
+   app.all(/.*/, function(req, res, next){
+      if(
+         setupBBS.filenameAreaLock !== null &&
+         fs.existsSync( setupBBS.filenameAreaLock )
+      ){
+         res.type('text/plain;charset=utf-8');
+         res.status(503);
+         res.send([
+            'WebBBS sevice is temporarily unavailable (mail base is locked).'
+         ].join(''));
+      } else next();
    });
 
    // parse FGHI URL

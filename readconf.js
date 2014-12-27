@@ -9,6 +9,7 @@ module.exports = function(configOptions){
 
    // Read WebBBS-specific settings:
    setup.interfaceLanguage = configBBS.last('InterfaceLanguage') || 'en';
+   setup.filenameAreaLock = configBBS.last('AreaLockFile'); // or `null`
 
    // Read GoldED settings:
    var encodingGED = configBBS.last('EncodingGoldED') || 'utf8';
