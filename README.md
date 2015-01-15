@@ -41,7 +41,11 @@ The configuration file's path is given as `options_for_WebBBS.configFilePath` p
 
 The following configuration options are supported (in arbitrary order):
 
-* `ConfigGoldED` — path to the configuration file of GoldED (or GoldED+, or GoldED-NSF). This setting allows to use WebBBS alongside the popular Fidonet mail editor (GoldED) when the former uses some settings of the latter.
+* `ConfigGoldED` — path to the configuration file of GoldED (or [GoldED+](http://golded-plus.sf.net), or GoldED-NSF). This setting is not necessary, but it allows to use WebBBS alongside the popular Fidonet mail editor (GoldED) when the former uses some settings of the latter. The following settings (also individually mentioned below) are used:
+   * `UserName`
+   * `ViewKludges`
+   * `StyleCodes`
+   * `AreaSep`
 
 * `EncodingGoldED` — the encoding of non-ASCII characters in the GoldED config file. By default, `utf8` is used. You may use any encoding provided by the [`iconv-lite`](https://github.com/ashtuchkin/iconv-lite) module.
 
