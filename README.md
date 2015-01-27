@@ -81,7 +81,7 @@ The following configuration options are supported (in arbitrary order):
 
 ## Testing the WebBBS module
 
-[![(build testing status)](https://travis-ci.org/Mithgol/node-webbbs.svg?branch=master)](https://travis-ci.org/Mithgol/node-webbbs)
+[![(build testing status)](https://img.shields.io/travis/Mithgol/node-webbbs/master.svg?style=plastic)](https://travis-ci.org/Mithgol/node-webbbs)
 
 It is necessary to install [JSHint](http://jshint.com/) for testing.
 
