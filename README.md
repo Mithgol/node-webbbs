@@ -35,7 +35,9 @@ var WebBBS = require('webbbs')(options_for_WebBBS);
 app.use(vhost('webbbs.example.org', WebBBS));
 ```
 
-## Configuration
+You should create a configuration file for the installed WebBBS before you use it.
+
+## Configuration options
 
 The configuration file's path is given as `options_for_WebBBS.configFilePath` property. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
 
@@ -78,6 +80,12 @@ The following configuration options are supported (in arbitrary order):
    * `ru-petr1708` — imperial Russian. (Defined by [IANA language subtag registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) as “Russian orthography from the Petrine orthographic reforms of 1708 to the 1917 orthographic reform”.)
 
 * `AreaLockFile` — a path to the file which (when present) indicate that the mail bases are being modified by another program (such as echoprocessor, for example). The WebBBS returns `HTTP 503 Service Unavailable` when this file exists.
+
+### Examples of external configuration files
+
+Examples of the area configuration file of HPT are available in its own CVS repository on SourceForge [in English](http://husky.cvs.sf.net/viewvc/husky/hpt/config/areas) and [in Russian](http://husky.cvs.sf.net/viewvc/husky/hpt/config/areas.ru). Text lines of these examples are commented out (by `#` characters in the lines' beginnings) but your real configuration lines must be uncommented.
+
+An example of GoldED configuration file is [available](http://golded-plus.cvs.sourceforge.net/viewvc/golded-plus/golded%2B/etc/golded.conf?revision=1.1&view=markup) in the CVS of GoldED+. It contains a lot of configuration directives; only the most basic of them are understood by WebBBS (and they already appear in `webbbs.conf-example` anyway).
 
 ## Testing the WebBBS module
 
