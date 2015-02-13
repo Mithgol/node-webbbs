@@ -4,6 +4,7 @@ var path = require('path');
 var extend = require('extend');
 var parseFGHIURL = require('fghi-url');
 var configReader = require('./readconf.js');
+var generatorRSS = require('./rss.js');
 
 var defaultsWebBBS = {
    configFilePath: path.join(__dirname, 'webbbs.conf')
@@ -111,29 +112,7 @@ module.exports = function(optionsWebBBS){
       next();
    });
 
-   app.get(/^\/rss\/?(?:$|\?)/, function(req, res){
-      if( res.FGHIURL === null ){
-         res.type('text/plain;charset=utf-8');
-         res.status(404);
-         res.send([
-            'Some FGHI URL should be given after «/rss?».'
-         ].join(''));
-         return;
-      }
-      if( res.FGHIURL.scheme !== 'area' ){
-         res.type('text/plain;charset=utf-8');
-         res.status(404);
-         res.send([
-            'RSS is provided only for the «area://» URLs.'
-         ].join(''));
-         return;
-      }
-      res.type('text/plain;charset=utf-8');
-      res.send([
-         'You have successfully reached ',
-         'the stub version of the WebBBS RSS generator.'
-      ].join(''));
-   });
+   app.get(/^\/rss\/?(?:$|\?)/, generatorRSS);
 
    app.get('/', function(req, res){
       res.type('text/plain;charset=utf-8');
