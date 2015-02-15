@@ -112,7 +112,7 @@ module.exports = function(optionsWebBBS){
       next();
    });
 
-   app.get(/^\/rss\/?(?:$|\?)/, generatorRSS);
+   app.get(/^\/rss\/?(?:$|\?)/, generatorRSS(setupBBS));
 
    app.get('/', function(req, res){
       res.type('text/plain;charset=utf-8');

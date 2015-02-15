@@ -1,41 +1,62 @@
-module.exports = function(req, res){
-   if( res.FGHIURL === null ){
+module.exports = function(setup){
+   return function(req, res){
+
+      if( res.FGHIURL === null ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'Some FGHI URL should be given after «/rss?».'
+         ].join(''));
+         return;
+      }
+      if( res.FGHIURL.scheme !== 'area' ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'RSS is provided only for the «area://» URLs.'
+         ].join(''));
+         return;
+      }
+      if( res.FGHIURL.echoNames.length > 1 ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'RSS output for «area://» URLs with multiple echomail area names',
+            ' is not currently supported.'
+         ].join(''));
+         return;
+      }
+      if( res.FGHIURL.echoNames.length < 1 ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'RSS output for «area://» URLs without an echomail area name ',
+            'cannot be generated.'
+         ].join(''));
+         return;
+      }
+
+      var echotag = res.FGHIURL.echoNames[0][0];
+      var lcEchotag = echotag.toLowerCase();
+      var echoNames = setup.areas.group('EchoArea').names();
+      var foundNames = echoNames.filter(function(echoName){
+         return echoName.toLowerCase() === lcEchotag;
+      });
+      if( foundNames.length === 0 ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'Sorry, the echomail area «',
+            echotag,
+            '» is not found on the system.'
+         ].join(''));
+         return;
+      }
+
       res.type('text/plain;charset=utf-8');
-      res.status(404);
       res.send([
-         'Some FGHI URL should be given after «/rss?».'
+         'You have successfully reached ',
+         'the stub version of the WebBBS RSS generator.'
       ].join(''));
-      return;
-   }
-   if( res.FGHIURL.scheme !== 'area' ){
-      res.type('text/plain;charset=utf-8');
-      res.status(404);
-      res.send([
-         'RSS is provided only for the «area://» URLs.'
-      ].join(''));
-      return;
-   }
-   if( res.FGHIURL.echoNames.length > 1 ){
-      res.type('text/plain;charset=utf-8');
-      res.status(404);
-      res.send([
-         'RSS output for «area://» URLs with multiple echomail area names',
-         ' is not currently supported.'
-      ].join(''));
-      return;
-   }
-   if( res.FGHIURL.echoNames.length < 1 ){
-      res.type('text/plain;charset=utf-8');
-      res.status(404);
-      res.send([
-         'RSS output for «area://» URLs without an echomail area name ',
-         'cannot be generated.'
-      ].join(''));
-      return;
-   }
-   res.type('text/plain;charset=utf-8');
-   res.send([
-      'You have successfully reached ',
-      'the stub version of the WebBBS RSS generator.'
-   ].join(''));
+   };
 };
