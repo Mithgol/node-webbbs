@@ -1,3 +1,12 @@
+var strLeft = require('underscore.string/strLeft');
+
+var beforeSpace = function(inString){
+   if( inString.indexOf(' ') === -1 ){
+      return inString;
+   }
+   return strLeft(inString, ' ');
+};
+
 module.exports = function(setup){
    return function(req, res){
 
@@ -49,6 +58,21 @@ module.exports = function(setup){
             'Sorry, the echomail area «',
             echotag,
             '» is not found on the system.'
+         ].join(''));
+         return;
+      }
+
+      var setupEchotag = foundNames[0];
+      var echoPath = beforeSpace(
+         setup.areas.group('EchoArea').first(setupEchotag)
+      );
+      if( echoPath.toLowerCase() === 'passthrough' ){
+         res.type('text/plain;charset=utf-8');
+         res.status(404);
+         res.send([
+            'Sorry, the echomail area «',
+            echotag,
+            '» is passthrough.'
          ].join(''));
          return;
       }
