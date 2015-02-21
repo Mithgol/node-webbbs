@@ -1,3 +1,4 @@
+var Fido2RSS = require('fido2rss');
 var strLeft = require('underscore.string/strLeft');
 
 var beforeSpace = function(inString){
@@ -77,10 +78,25 @@ module.exports = function(setup){
          return;
       }
 
-      res.type('text/plain;charset=utf-8');
-      res.send([
-         'You have successfully reached ',
-         'the stub version of the WebBBS RSS generator.'
-      ].join(''));
+      var optionsRSS = {
+         area: setupEchotag,
+         base: echoPath
+      };
+
+      Fido2RSS(optionsRSS, function(err, outputRSS){
+         if( err ){
+            res.type('text/plain;charset=utf-8');
+            res.status(500);
+            res.send([
+               'Sorry, there was an error when generating ',
+               'an RSS feed for the echomail area «',
+               echotag,
+               '».'
+            ].join(''));
+            return;
+         }
+         res.type('application/rss+xml;charset=utf-8');
+         res.send(outputRSS);
+      });
    };
 };
