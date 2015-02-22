@@ -41,6 +41,8 @@ You should create a configuration file for the installed WebBBS before you use i
 
 The configuration file's path is given as `options_for_WebBBS.configFilePath` property. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
 
+The configuration file is read only once (when the server starts).
+
 The following configuration options are supported (in arbitrary order):
 
 * `ConfigGoldED` — path to the configuration file of GoldED (or [GoldED+](http://golded-plus.sf.net), or GoldED-NSF). This setting is not necessary, but it allows to use WebBBS alongside the popular Fidonet mail editor (GoldED) when the former uses some settings of the latter. The following settings (also individually mentioned below) are used:
