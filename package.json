@@ -1,7 +1,7 @@
 {
 "name": "webbbs",
 "main": "webbbs.js",
-"version": "0.0.1",
+"version": "0.0.2",
 "description": "Fidonet WebBBS application module for Express.js web server.",
 "keywords": ["fido", "fidonet", "bbs", "webbbs", "express", "expressjs", "express-js", "express.js"],
 "author": { "name": "Mithgol the Webmaster" },
@@ -11,8 +11,8 @@
    "url": "https://github.com/Mithgol/node-webbbs.git"
 },
 "dependencies": {
-   "express": "~4.11.2",
-   "express-handlebars": "~1.1.0",
+   "express": "~4.12.0",
+   "express-handlebars": "~1.2.1",
    "extend": "~2.0.0",
    "fghi-url": "~0.5.0-pre.5",
    "fido2rss": "~0.6.0",
