@@ -1,12 +1,4 @@
 var Fido2RSS = require('fido2rss');
-var strLeft = require('underscore.string/strLeft');
-
-var beforeSpace = function(inString){
-   if( inString.indexOf(' ') === -1 ){
-      return inString;
-   }
-   return strLeft(inString, ' ');
-};
 
 module.exports = function(setup){
    return function(req, res){
@@ -47,56 +39,54 @@ module.exports = function(setup){
       }
 
       var echotag = res.FGHIURL.echoNames[0][0];
-      var lcEchotag = echotag.toLowerCase();
-      var echoNames = setup.areas.group('EchoArea').names();
-      var foundNames = echoNames.filter(function(echoName){
-         return echoName.toLowerCase() === lcEchotag;
-      });
-      if( foundNames.length === 0 ){
-         res.type('text/plain;charset=utf-8');
-         res.status(404);
-         res.send([
-            'Sorry, the echomail area «',
-            echotag,
-            '» is not found on the system.'
-         ].join(''));
-         return;
-      }
-
-      var setupEchotag = foundNames[0];
-      var echoPath = beforeSpace(
-         setup.areas.group('EchoArea').first(setupEchotag)
-      );
-      if( echoPath.toLowerCase() === 'passthrough' ){
-         res.type('text/plain;charset=utf-8');
-         res.status(404);
-         res.send([
-            'Sorry, the echomail area «',
-            echotag,
-            '» is passthrough.'
-         ].join(''));
-         return;
-      }
-
-      var optionsRSS = {
-         area: setupEchotag,
-         base: echoPath
-      };
-
-      Fido2RSS(optionsRSS, function(err, outputRSS){
+      setup.areas.area(echotag, function(err, data){
          if( err ){
             res.type('text/plain;charset=utf-8');
-            res.status(500);
+            res.status(404);
+            if( err.notFound ){
+               res.send([
+                  'Sorry, the echomail area «',
+                  echotag,
+                  '» is not found on the system.'
+               ].join(''));
+               return;
+            }
+            if( err.passthrough ){
+               res.send([
+                  'Sorry, the echomail area «',
+                  echotag,
+                  '» is passthrough.'
+               ].join(''));
+               return;
+            }
             res.send([
-               'Sorry, there was an error when generating ',
-               'an RSS feed for the echomail area «',
+               'Sorry, while reading the echomail area «',
                echotag,
-               '».'
+               '» an unknown error has occured.'
             ].join(''));
             return;
-         }
-         res.type('application/rss+xml;charset=utf-8');
-         res.send(outputRSS);
-      });
-   };
+         } // if( err )
+
+         var optionsRSS = {
+            area: data.configName,
+            base: data.path
+         };
+
+         Fido2RSS(optionsRSS, function(err, outputRSS){
+            if( err ){
+               res.type('text/plain;charset=utf-8');
+               res.status(500);
+               res.send([
+                  'Sorry, there was an error when generating ',
+                  'an RSS feed for the echomail area «',
+                  echotag,
+                  '».'
+               ].join(''));
+               return;
+            }
+            res.type('application/rss+xml;charset=utf-8');
+            res.send(outputRSS);
+         });
+      }); // setup.areas.area
+   }; // return function
 };

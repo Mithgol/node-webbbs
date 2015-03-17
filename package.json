@@ -22,8 +22,7 @@
    "font-awesome": "~4.3.0",
    "jquery": "~1.11.2",
    "nodelist": "~1.1.4",
-   "simteconf": "~0.6.7",
-   "underscore.string": "~3.0.3"
+   "simteconf": "~0.6.7"
 },
 "scripts": {
    "test": "jshint --verbose webbbs.js readconf.js rss.js"

@@ -1,3 +1,4 @@
+var fidoconfig = require('fidoconfig');
 var nodelist = require('nodelist');
 var simteconf = require('simteconf');
 
@@ -44,18 +45,8 @@ module.exports = function(configOptions){
    });
 
    // Read HPT areas:
-   var encodingHPT = configBBS.last('EncodingHPT') || 'utf8';
-   setup.areas = simteconf(configBBS.last('AreasHPT'), {
-      encoding: encodingHPT,
-      skipNames: ['#'],
-      lowercase: false,
-      prefixGroups: [
-         'NetmailArea',
-         'BadArea',
-         'DupeArea',
-         'LocalArea',
-         'EchoArea'
-      ]
+   setup.areas = fidoconfig.areas(configBBS.last('AreasHPT'), {
+      encoding: configBBS.last('EncodingHPT') || 'utf8'
    });
    // Read nodelist from ZIP:
    try {
