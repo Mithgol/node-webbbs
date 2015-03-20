@@ -35,6 +35,21 @@ module.exports = function(optionsWebBBS){
    app.set('views', dirNodeViews);
    app.set('view engine', 'handlebars');
 
+   // messages
+   var langMessagesObject = require(
+      path.join(
+         __dirname, 'node_views', setupBBS.interfaceLanguage, 'messages.json'
+      )
+   );
+   var langMessagesObjectEn = require(
+      path.join(
+         __dirname, 'node_views', 'en', 'messages.json'
+      )
+   );
+   var msg = function(name){
+      return langMessagesObject[name] || langMessagesObjectEn[name];
+   };
+
    // serve special root files
    var serveSpecialRootFile = function(specialRootFileItem){
       var rootOpts = {
@@ -112,7 +127,7 @@ module.exports = function(optionsWebBBS){
       next();
    });
 
-   app.get(/^\/rss\/?(?:$|\?)/, generatorRSS(setupBBS));
+   app.get(/^\/rss\/?(?:$|\?)/, generatorRSS(setupBBS, msg));
 
    app.get('/', function(req, res){
       res.type('text/plain;charset=utf-8');

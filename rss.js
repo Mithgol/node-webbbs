@@ -1,14 +1,12 @@
 var Fido2RSS = require('fido2rss');
 
-module.exports = function(setup){
+module.exports = function(setup, msg){
    return function(req, res){
 
       if( res.FGHIURL === null ){
          res.type('text/plain;charset=utf-8');
          res.status(404);
-         res.send([
-            'Some FGHI URL should be given after «/rss?».'
-         ].join(''));
+         res.send( msg('RSS_requires_FGHI_URL') );
          return;
       }
       if( res.FGHIURL.scheme !== 'area' ){
