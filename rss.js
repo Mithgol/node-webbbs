@@ -1,3 +1,4 @@
+var util = require('util');
 var Fido2RSS = require('fido2rss');
 
 module.exports = function(setup, msg){
@@ -12,27 +13,19 @@ module.exports = function(setup, msg){
       if( res.FGHIURL.scheme !== 'area' ){
          res.type('text/plain;charset=utf-8');
          res.status(404);
-         res.send([
-            'RSS is provided only for the «area://» URLs.'
-         ].join(''));
+         res.send( msg('RSS_requires_area_URL') );
          return;
       }
       if( res.FGHIURL.echoNames.length > 1 ){
          res.type('text/plain;charset=utf-8');
          res.status(404);
-         res.send([
-            'RSS output for «area://» URLs with multiple echomail area names',
-            ' is not currently supported.'
-         ].join(''));
+         res.send( msg('RSS_requires_single_area_URL') );
          return;
       }
       if( res.FGHIURL.echoNames.length < 1 ){
          res.type('text/plain;charset=utf-8');
          res.status(404);
-         res.send([
-            'RSS output for «area://» URLs without an echomail area name ',
-            'cannot be generated.'
-         ].join(''));
+         res.send( msg('RSS_requires_some_area_URL') );
          return;
       }
 
@@ -42,26 +35,16 @@ module.exports = function(setup, msg){
             res.type('text/plain;charset=utf-8');
             res.status(404);
             if( err.notFound ){
-               res.send([
-                  'Sorry, the echomail area «',
-                  echotag,
-                  '» is not found on the system.'
-               ].join(''));
+               res.send(util.format( msg('RSS_area_not_found'), echotag ));
                return;
             }
             if( err.passthrough ){
-               res.send([
-                  'Sorry, the echomail area «',
-                  echotag,
-                  '» is passthrough.'
-               ].join(''));
+               res.send(util.format( msg('RSS_area_passthrough'), echotag ));
                return;
             }
-            res.send([
-               'Sorry, while reading the echomail area «',
-               echotag,
-               '» an unknown error has occured.'
-            ].join(''));
+            res.send(
+               util.format( msg('RSS_area_config_reading_error'), echotag )
+            );
             return;
          } // if( err )
 
@@ -74,12 +57,7 @@ module.exports = function(setup, msg){
             if( err ){
                res.type('text/plain;charset=utf-8');
                res.status(500);
-               res.send([
-                  'Sorry, there was an error when generating ',
-                  'an RSS feed for the echomail area «',
-                  echotag,
-                  '».'
-               ].join(''));
+               res.send(util.format( msg('RSS_error_generating'), echotag ));
                return;
             }
             res.type('application/rss+xml;charset=utf-8');

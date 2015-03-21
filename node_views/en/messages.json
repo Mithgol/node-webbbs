@@ -1,3 +1,10 @@
 {
-"RSS_requires_FGHI_URL": "Some FGHI URL should be given after «/rss?»."
+"RSS_requires_FGHI_URL": "Some FGHI URL should be given after «/rss?».",
+"RSS_requires_area_URL": "RSS is provided only for the «area://» URLs.",
+"RSS_requires_single_area_URL": "RSS output for «area://» URLs with multiple echomail area names is not currently supported.",
+"RSS_requires_some_area_URL": "RSS output for «area://» URLs without an echomail area name cannot be generated.",
+"RSS_area_not_found": "Unfortunately, the echomail area «%s» is not found on the system. Cannot create RSS for this area.",
+"RSS_area_passthrough": "Unfortunately, the echomail area «%s» is passthrough. Cannot create RSS for this area.",
+"RSS_area_config_reading_error": "Unfortunately, an unknown error occured while reading the configuration of the echomail area «%s». Cannot create RSS for this area.",
+"RSS_error_generating": "Unfortunately, there was an error when generating an RSS feed for the echomail area «%s»."
 }
