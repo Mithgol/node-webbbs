@@ -6,5 +6,8 @@
 "RSS_area_not_found": "Unfortunately, the echomail area «%s» is not found on the system. Cannot create RSS for this area.",
 "RSS_area_passthrough": "Unfortunately, the echomail area «%s» is passthrough. Cannot create RSS for this area.",
 "RSS_area_config_reading_error": "Unfortunately, an unknown error occured while reading the configuration of the echomail area «%s». Cannot create RSS for this area.",
-"RSS_error_generating": "Unfortunately, there was an error when generating an RSS feed for the echomail area «%s»."
+"RSS_error_generating": "Unfortunately, there was an error when generating an RSS feed for the echomail area «%s».",
+
+"mail_base_locked": "WebBBS service is temporarily unavailable (an update of mail bases is in progress).",
+"stub": "You have successfully reached the initial version of the WebBBS application."
 }

@@ -100,9 +100,7 @@ module.exports = function(optionsWebBBS){
       ){
          res.type('text/plain;charset=utf-8');
          res.status(503);
-         res.send([
-            'WebBBS sevice is temporarily unavailable (mail base is locked).'
-         ].join(''));
+         res.send( msg('mail_base_locked') );
       } else next();
    });
 
@@ -131,10 +129,7 @@ module.exports = function(optionsWebBBS){
 
    app.get('/', function(req, res){
       res.type('text/plain;charset=utf-8');
-      res.send([
-         'You have successfully reached ',
-         'the initial version of the WebBBS application.'
-      ].join(''));
+      res.send( msg('stub') );
    });
 
    return app;
