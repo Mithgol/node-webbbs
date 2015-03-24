@@ -12,7 +12,7 @@
 },
 "dependencies": {
    "express": "~4.12.0",
-   "express-handlebars": "~1.2.1",
+   "express-handlebars": "~2.0.0",
    "extend": "~2.0.0",
    "fghi-url": "~0.5.0-pre.5",
    "fido2rss": "~0.6.0",
