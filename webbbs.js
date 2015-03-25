@@ -4,7 +4,7 @@ var path = require('path');
 var extend = require('extend');
 var parseFGHIURL = require('fghi-url');
 var configReader = require('./readconf.js');
-var generatorRSS = require('./rss.js');
+var generatorRSS = require('./fido_views/rss.js');
 
 var defaultsWebBBS = {
    configFilePath: path.join(__dirname, 'webbbs.conf')
