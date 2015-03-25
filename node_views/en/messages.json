@@ -8,6 +8,15 @@
 "RSS_area_config_reading_error": "Unfortunately, an unknown error occured while reading the configuration of the echomail area «%s». Cannot create RSS for this area.",
 "RSS_error_generating": "Unfortunately, there was an error when generating an RSS feed for the echomail area «%s».",
 
+"areafile_requires_single_area_URL": "Decoding a file designated by an «area://» URL with multiple echomail area names is not currently supported.",
+"areafile_requires_simple_path": "Decoding a file designated by an «area://» URL with a complex path to that file is not currently supported.",
+"areafile_area_not_found": "Unfortunately, the echomail area «%s» is not found on the system. Cannot get a file from this area.",
+"areafile_area_passthrough": "Unfortunately, the echomail area «%s» is passthrough. Cannot get a file from this area.",
+"areafile_area_config_reading_error": "Unfortunately, an unknown error occured while reading the configuration of the echomail area «%s». Cannot get a file from this area.",
+"areafile_not_found": "Unfortunately, the file «%s» could not be found in the echomail area «%s».",
+
 "mail_base_locked": "WebBBS service is temporarily unavailable (an update of mail bases is in progress).",
-"stub": "You have successfully reached the initial version of the WebBBS application."
+
+"stub": "You have successfully reached the initial version of the WebBBS application.",
+"stub_echolist": "You have successfully reached the initial version of the echolist viewer."
 }

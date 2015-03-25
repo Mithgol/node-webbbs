@@ -4,7 +4,9 @@ var path = require('path');
 var extend = require('extend');
 var parseFGHIURL = require('fghi-url');
 var configReader = require('./readconf.js');
+
 var generatorRSS = require('./fido_views/rss.js');
+var areaFileDecoder = require('./fido_views/areafile.js');
 
 var defaultsWebBBS = {
    configFilePath: path.join(__dirname, 'webbbs.conf')
@@ -128,6 +130,21 @@ module.exports = function(optionsWebBBS){
    app.get(/^\/rss\/?(?:$|\?)/, generatorRSS(setupBBS, msg));
 
    app.get('/', function(req, res){
+      if(
+         res.FGHIURL !== null &&
+         res.FGHIURL.scheme === 'area'
+      ){
+         if( res.FGHIURL.echoNames.length < 1 ){
+            res.type('text/plain;charset=utf-8');
+            res.send( msg('stub_echolist') );
+            return;
+         }
+         if( res.FGHIURL.objectPath.length > 0 ){
+            areaFileDecoder(setupBBS, msg)(req, res);
+            return;
+         }
+      }
+
       res.type('text/plain;charset=utf-8');
       res.send( msg('stub') );
    });
