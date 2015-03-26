@@ -1,7 +1,7 @@
 {
 "name": "webbbs",
 "main": "webbbs.js",
-"version": "0.0.2",
+"version": "0.0.3",
 "description": "Fidonet WebBBS application module for Express.js web server.",
 "keywords": ["fido", "fidonet", "bbs", "webbbs", "express", "expressjs", "express-js", "express.js"],
 "author": { "name": "Mithgol the Webmaster" },
