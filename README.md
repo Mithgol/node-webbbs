@@ -46,7 +46,6 @@ The configuration file is read only once (when the server starts).
 The following configuration options are supported (in arbitrary order):
 
 * `ConfigGoldED` — path to the configuration file of GoldED (or [GoldED+](http://golded-plus.sf.net), or GoldED-NSF). This setting is not necessary, but it allows to use WebBBS alongside the popular Fidonet mail editor (GoldED) when the former uses some settings of the latter. The following settings (also individually mentioned below) are used:
-   * `UserName`
    * `ViewKludges`
    * `StyleCodes`
    * `AreaSep`
