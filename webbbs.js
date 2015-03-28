@@ -9,7 +9,8 @@ var generatorRSS = require('./fido_views/rss.js');
 var areaFileDecoder = require('./fido_views/areafile.js');
 
 var defaultsWebBBS = {
-   configFilePath: path.join(__dirname, 'webbbs.conf')
+   configFilePath: path.join(__dirname, 'webbbs.conf'),
+   port: 80
 };
 
 var getFullQuery = function(URL){

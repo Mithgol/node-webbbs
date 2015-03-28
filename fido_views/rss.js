@@ -50,7 +50,16 @@ module.exports = function(setup, msg){
 
          var optionsRSS = {
             area: data.configName,
-            base: data.path
+            base: data.path,
+            areaPrefixURL: [
+               req.protocol,
+               '://',
+               req.hostname,
+               ':',
+               setup.port,
+               req.baseUrl,
+               '/?'
+            ].join('')
          };
 
          Fido2RSS(optionsRSS, function(err, outputRSS){
