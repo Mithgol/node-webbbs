@@ -32,3 +32,7 @@ npm-debug.log
 
 # Project specific
 webbbs.conf
+*.jhr
+*.jdt
+*.jdx
+*.jlr
