@@ -27,9 +27,11 @@ var fileScanNextMessage = function(
 
          var decodedFile = UUE.decodeFile(messageText, filename);
          if( decodedFile === null ){
-            fileScanNextMessage(
-               res, req, msg, filename, echotag, echobase, msgNum-1
-            );
+            setImmediate(function(){
+               fileScanNextMessage(
+                  res, req, msg, filename, echotag, echobase, msgNum-1
+               );
+            });
             return;
          }
 
