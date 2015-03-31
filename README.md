@@ -63,7 +63,7 @@ The following configuration options are supported (in arbitrary order):
 
 * `EncodingHPT` — the encoding of non-ASCII characters in the HPT areafile. By default, `utf8` is used. You may use any encoding provided by the [`iconv-lite`](https://github.com/ashtuchkin/iconv-lite) module.
 
-* `ViewKludges` — if `Yes` (case-insensitive), Fidonet kludges (hidden lines) are displayed. This setting may be borrowed from GoldED's configuration if omitted in WebBBS's, but it affects unknown kludges as well (while in GoldED unknown kludges are controlled by a separate `ViewHidden` setting).
+* `ViewKludges` — if `Yes` (default, case-insensitive), Fidonet kludges (hidden lines) are displayed. This setting may be borrowed from GoldED's configuration if omitted in WebBBS's, but it affects unknown kludges as well (while in GoldED unknown kludges are controlled by a separate `ViewHidden` setting).
 
 * `StyleCodes` — may have one of the following values (not case-sensitive; borrowed from GoldED's configuration if omitted in WebBBS's) that control the processing of style codes:
    * `Yes` (default) — style codes affect the style of words surrounded by them. There are four types of style codes: `*asterisks*`, `_underscores_`, `#hashes#` or `/slashes/` around words.
