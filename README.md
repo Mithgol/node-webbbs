@@ -6,7 +6,7 @@ This module is a web application for the [Express.js](http://expressjs.com/) w
 
 ## Installing the WebBBS module
 
-[![(npm package version)](https://nodei.co/npm/webbbs.png?downloads=true)](https://npmjs.org/package/webbbs) [![(a histogram of downloads)](https://nodei.co/npm-dl/webbbs.png?months=3)](https://npmjs.org/package/webbbs)
+[![(npm package version)](https://nodei.co/npm/webbbs.png?downloads=true)](https://npmjs.org/package/webbbs) [![(a histogram of downloads)](https://nodei.co/npm-dl/webbbs.png?months=3&height=2)](https://npmjs.org/package/webbbs)
 
 * Latest packaged version: `npm install webbbs`
 
