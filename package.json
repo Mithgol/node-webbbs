@@ -11,7 +11,7 @@
    "url": "https://github.com/Mithgol/node-webbbs.git"
 },
 "dependencies": {
-   "express-handlebars": "~2.0.0",
+   "express-handlebars": "~2.0.1",
    "extend": "~2.0.0",
    "fghi-url": "~0.5.0-pre.5",
    "fido2rss": "~0.8.1",
