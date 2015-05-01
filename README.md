@@ -100,7 +100,7 @@ It is necessary to install [JSHint](http://jshint.com/) for testing.
 
 * You may install JSHint globally (`npm install jshint -g`) or locally (`npm install jshint` in the directory of the WebBBS module).
 
-After that you may run `npm test` (in the directory of the WebBBS module). Only the JS code errors are caught.
+After that you may run `npm test` (in the directory of the WebBBS module). Only the JS code errors are caught; the code's behaviour is not tested.
 
 ## License
 
