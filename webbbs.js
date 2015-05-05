@@ -103,7 +103,9 @@ module.exports = function(optionsWebBBS){
       ){
          res.type('text/plain;charset=utf-8');
          res.status(503);
-         res.send( msg('mail_base_locked') );
+         res.render('error', {
+            errorHTML: msg('mail_base_locked')
+         });
       } else next();
    });
 
@@ -137,7 +139,9 @@ module.exports = function(optionsWebBBS){
       ){
          if( res.FGHIURL.echoNames.length < 1 ){
             res.type('text/plain;charset=utf-8');
-            res.send( msg('stub_echolist') );
+            res.render('error', {
+               errorHTML: msg('stub_echolist')
+            });
             return;
          }
          if( res.FGHIURL.objectPath.length > 0 ){
@@ -147,7 +151,9 @@ module.exports = function(optionsWebBBS){
       }
 
       res.type('text/plain;charset=utf-8');
-      res.send( msg('stub') );
+      res.render('error', {
+         errorHTML: msg('stub')
+      });
    });
 
    return app;
