@@ -101,7 +101,6 @@ module.exports = function(optionsWebBBS){
          setupBBS.filenameAreaLock !== null &&
          fs.existsSync( setupBBS.filenameAreaLock )
       ){
-         res.type('text/plain;charset=utf-8');
          res.status(503);
          res.render('error', {
             errorHTML: msg('mail_base_locked')
@@ -138,7 +137,6 @@ module.exports = function(optionsWebBBS){
          res.FGHIURL.scheme === 'area'
       ){
          if( res.FGHIURL.echoNames.length < 1 ){
-            res.type('text/plain;charset=utf-8');
             res.render('error', {
                errorHTML: msg('stub_echolist')
             });
@@ -150,7 +148,6 @@ module.exports = function(optionsWebBBS){
          }
       }
 
-      res.type('text/plain;charset=utf-8');
       res.render('error', {
          errorHTML: msg('stub')
       });
