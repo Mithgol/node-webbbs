@@ -8,6 +8,9 @@ var configReader = require('./readconf.js');
 var generatorRSS = require('./fido_views/rss.js');
 var areaFileDecoder = require('./fido_views/areafile.js');
 
+var manifest = require('./package.json');
+var softwareName = 'WebBBS' + manifest.version;
+
 var defaultsWebBBS = {
    configFilePath: path.join(__dirname, 'webbbs.conf'),
    port: 80
@@ -103,7 +106,8 @@ module.exports = function(optionsWebBBS){
       ){
          res.status(503);
          res.render('error', {
-            errorHTML: msg('mail_base_locked')
+            errorHTML: msg('mail_base_locked'),
+            softwareTitle: softwareName
          });
       } else next();
    });
@@ -138,7 +142,8 @@ module.exports = function(optionsWebBBS){
       ){
          if( res.FGHIURL.echoNames.length < 1 ){
             res.render('error', {
-               errorHTML: msg('stub_echolist')
+               errorHTML: msg('stub_echolist'),
+               softwareTitle: softwareName
             });
             return;
          }
@@ -149,7 +154,8 @@ module.exports = function(optionsWebBBS){
       }
 
       res.render('error', {
-         errorHTML: msg('stub')
+         errorHTML: msg('stub'),
+         softwareTitle: softwareName
       });
    });
 
