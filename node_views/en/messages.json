@@ -15,7 +15,7 @@
 "areafile_area_config_reading_error": "Unfortunately, an unknown error occured while reading the configuration of the echomail area «%s». Cannot get a file from this area.",
 "areafile_not_found": "Unfortunately, the file «%s» could not be found in the echomail area «%s».",
 
-"mail_base_locked": "WebBBS service is temporarily unavailable (an update of mail bases is in progress).",
+"mail_base_locked": "WebBBS service is temporarily unavailable (an update of mail bases is in progress). Try again later.",
 
 "stub": "You have successfully reached the initial version of the WebBBS application.",
 "stub_echolist": "You have successfully reached the initial version of the echolist viewer."
