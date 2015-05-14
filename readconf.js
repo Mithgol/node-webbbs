@@ -55,6 +55,13 @@ module.exports = function(configOptions){
    } catch(e) {
       setup.nodelist = null;
    }
+   // Read backup WebBBS
+   var arrBackupWebBBS = configBBS.all('BackupWebBBS');
+   if( arrBackupWebBBS === null ){
+      setup.backupWebBBS = {};
+   } else {
+      // TODO
+   }
 
    return setup;
 };
