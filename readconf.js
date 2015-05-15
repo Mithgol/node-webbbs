@@ -1,5 +1,7 @@
 var fidoconfig = require('fidoconfig');
+var listReaderSync = require('ftp-fileecho-list').sync;
 var nodelist = require('nodelist');
+var path = require('path');
 var simteconf = require('simteconf');
 
 module.exports = function(configOptions){
@@ -48,6 +50,7 @@ module.exports = function(configOptions){
    setup.areas = fidoconfig.areas(configBBS.last('AreasHPT'), {
       encoding: configBBS.last('EncodingHPT') || 'utf8'
    });
+
    // Read nodelist from ZIP:
    try {
       var ZIPNodelist = configBBS.last('ZIPNodelist');
@@ -55,12 +58,17 @@ module.exports = function(configOptions){
    } catch(e) {
       setup.nodelist = null;
    }
-   // Read backup WebBBS
+
+   // Read backup WebBBS:
    var arrBackupWebBBS = configBBS.all('BackupWebBBS');
    if( arrBackupWebBBS === null ){
       setup.backupWebBBS = {};
    } else {
-      // TODO
+      setup.backupWebBBS = listReaderSync(
+         arrBackupWebBBS.map(function(itemBackupWebBBS){
+            return path.resolve(__dirname, itemBackupWebBBS);
+         })
+      );
    }
 
    return setup;
