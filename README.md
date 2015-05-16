@@ -86,6 +86,10 @@ The following configuration options are supported (in arbitrary order):
 
 * `AreaLockFile` — a path to the file which (when present) indicate that the mail bases are being modified by another program (such as echoprocessor, for example). The WebBBS returns `HTTP 503 Service Unavailable` when this file exists.
 
+* `BackupWebBBS` — a path to the file that contains (on its first line) a common beginning of URLs and then (on its second line) the names of echomail areas that are present on some other WebBBS. This module uses such remote WebBBS as a backup for echomail areas that are not defined in the module's config but are known to be present on a remote. The user becomes redirected to the remote WebBBS.
+   * If a path is not absolute, it is treated as relative from the module's directory (where its `package.json` resides).
+   * Several `BackupWebBBS` directives may be given in order of importance (from the most important to the least important: if an area is present on several of the given WebBBS, then the user is redirected to the first of such WebBBS).
+
 ### Examples of external configuration files
 
 Examples of the area configuration file of HPT are available in its own CVS repository on SourceForge [in English](http://husky.cvs.sf.net/viewvc/husky/hpt/config/areas) and [in Russian](http://husky.cvs.sf.net/viewvc/husky/hpt/config/areas.ru). Text lines of these examples are commented out (by `#` characters in the lines' beginnings) but your real configuration lines must be uncommented.
