@@ -114,7 +114,7 @@ module.exports = function(optionsWebBBS){
 
    // parse FGHI URL
    app.all(/.*/, function(req, res, next){
-      var queryURL = getFullQuery(req.originalUrl);
+      var queryURL = getFullQuery(req.originalUrl); // see also below
       var parsedURL;
       if( queryURL === '' ){
          parsedURL = null;
@@ -123,13 +123,16 @@ module.exports = function(optionsWebBBS){
             parsedURL = parseFGHIURL(queryURL);
          } catch(e) {
             try {
-               parsedURL = parseFGHIURL( decodeURIComponent(queryURL) );
+               queryURL = decodeURIComponent(queryURL);
+               parsedURL = parseFGHIURL(queryURL);
             } catch(ee) {
+               queryURL = getFullQuery(req.originalUrl); // see also above
                parsedURL = null;
             }
          }
       }
       res.FGHIURL = parsedURL;
+      res.rawFGHIURL = queryURL;
       next();
    });
 
