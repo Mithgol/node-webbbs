@@ -4,4 +4,5 @@ EncodingHPT cp866
 AreasHPT \Fido\Soft\HPToss\areas.cfg
 AreaLockFile \Fido\Flags\webbbs.lock
 ZIPNodelist \Fido\Nodelist\nodelist.zip
+BackupWebBBS backup.lst
 InterfaceLanguage en
