@@ -89,6 +89,7 @@ The following configuration options are supported (in arbitrary order):
 * `BackupWebBBS` — a path to the file that contains (on its first line) a common beginning of URLs and then (on its second line) the names of echomail areas that are present on some other WebBBS. This module uses such remote WebBBS as a backup for echomail areas that are not defined in the module's config but are known to be present on a remote. The user becomes redirected to the remote WebBBS.
    * If a path is not absolute, it is treated as relative from the module's directory (where its `package.json` resides).
    * Several `BackupWebBBS` directives may be given in order of importance (from the most important to the least important: if an area is present on several of the given WebBBS, then the user is redirected to the first of such WebBBS).
+   * A redirect does not happen if the URL designates an encoded file in an echomail area.
 
 ### Examples of external configuration files
 
