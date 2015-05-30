@@ -18,7 +18,7 @@ You may visit https://github.com/Mithgol/node-webbbs#readme occasionally to rea
 
 ## Using the WebBBS module
 
-When you `require()` the installed module, you get a function that returns an Express.js application that provides a **WebBBS** interface to echomail areas of Fidonet.
+When you `require()` the installed module, you get a function that accepts an object of options and returns an Express.js application that provides a **WebBBS** interface to echomail areas of Fidonet.
 
 You may serve that application on a route (path) of your Express-based web server:
 
@@ -35,7 +35,7 @@ var WebBBS = require('webbbs')(options_for_WebBBS);
 app.use(vhost('webbbs.example.org', WebBBS));
 ```
 
-You should create a configuration file for the installed WebBBS before you use it.
+You should create a configuration file for the installed WebBBS before you use it. (See below.)
 
 ## Configuration options
 
@@ -43,7 +43,7 @@ The `options_for_WebBBS` object that is given to WebBBS has the following pr
 
 * `port` (by default, `80`) — the port to be used in absolute URLs in RSS feeds. (It should be the port that the Web server listens to.)
 
-* `configFilePath` — the path to the configuration file that contains most of the other configuration options in their text from, one line per option. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
+* `configFilePath` — the path to the configuration file. That file contains most of the other configuration options in their text from, one line per option. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
 
 The configuration file is read only once (when the server starts).
 
