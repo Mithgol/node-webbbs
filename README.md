@@ -56,8 +56,8 @@ var fs = require('fs');
 
 require('https').createServer(
    {
-      key:   fs.readFileSync('somepath/server.key', {encoding: 'utf8'}),
-      cert:  fs.readFileSync('somepath/server.crt', {encoding: 'utf8'}),
+      key:   fs.readFileSync('somepath/server.key'),
+      cert:  fs.readFileSync('somepath/server.crt'),
       honorCipherOrder: true
    },
    require('webbbs')(options_for_WebBBS)
