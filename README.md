@@ -20,22 +20,51 @@ You may visit https://github.com/Mithgol/node-webbbs#readme occasionally to rea
 
 When you `require()` the installed module, you get a function that accepts an object of options and returns an Express.js application that provides a **WebBBS** interface to echomail areas of Fidonet.
 
-You may serve that application on a route (path) of your Express-based web server:
+**Example 1. ** You may serve the WebBBS application on a route (path) of your Express-based web server:
 
 ```js
+var express = require('express');
+var app = express();
+
 var WebBBS = require('webbbs')(options_for_WebBBS);
 app.use('/webbbs', WebBBS);
 ```
 
-You may also use the [`vhost`](https://github.com/expressjs/vhost) module to serve that application on a virtual host of your Express-based web server:
+**Example 2. ** You may also use the [`vhost`](https://github.com/expressjs/vhost) module to serve the WebBBS application on a virtual host of your Express-based web server:
 
 ```js
 var vhost = require('vhost');
+var express = require('express');
+var app = express();
+
 var WebBBS = require('webbbs')(options_for_WebBBS);
 app.use(vhost('webbbs.example.org', WebBBS));
 ```
 
-You should create a configuration file for the installed WebBBS before you use it. (See below.)
+**Example 3. ** You may also directly use the WebBBS application itself as your Express-based web server (if that server's only purpose is to work as your WebBBS).
+
+HTTP example:
+
+```js
+require('webbbs')(options_for_WebBBS).listen(80);
+```
+
+HTTPS example:
+
+```js
+var fs = require('fs');
+
+require('https').createServer(
+   {
+      key:   fs.readFileSync('somepath/server.key', {encoding: 'utf8'}),
+      cert:  fs.readFileSync('somepath/server.crt', {encoding: 'utf8'}),
+      honorCipherOrder: true
+   },
+   require('webbbs')(options_for_WebBBS)
+).listen(443);
+```
+
+**Note. ** You should create a configuration file for the installed WebBBS before you use it. (See below.)
 
 ## Configuration options
 
