@@ -14,6 +14,8 @@ This module is a web application for the [Express.js](http://expressjs.com/) w
 
 You may visit https://github.com/Mithgol/node-webbbs#readme occasionally to read the latest `README` because the package's version is not planned to grow after changes when they happen in `README` only. (And `npm publish --force` is [forbidden](http://blog.npmjs.org/post/77758351673/no-more-npm-publish-f) nowadays.)
 
+**Note: ** [Express.js](http://expressjs.com/) dependency is declared in [`peerDependencies`](https://docs.npmjs.com/files/package.json#peerdependencies) section and thus it won't be automatically installed by npm version 3 (or newer) when you install the WebBBS module. You are expected to install (separately) both Express and the WebBBS module as the dependencies of your own web server.
+
 ## Using the WebBBS module
 
 When you `require()` the installed module, you get a function that accepts an object of options and returns an Express.js application that provides a **WebBBS** interface to echomail areas of Fidonet.
