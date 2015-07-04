@@ -72,7 +72,7 @@ The `options_for_WebBBS` object that is given to WebBBS has the following pr
 
 * `port` (by default, `80`) — the port to be used in absolute URLs in RSS feeds. (It should be the port that the Web server listens to.)
 
-* `configFilePath` — the path to the configuration file. That file contains most of the other configuration options in their text from, one line per option. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
+* `configFilePath` — the path to the configuration file. That file contains most of the other configuration options in their text form, one line per option. (By default it is the file `webbbs.conf` in the directory of the WebBBS module. You may use `webbbs.conf-example` as an example.)
 
 The configuration file is read only once (when the server starts).
 
