@@ -1,7 +1,7 @@
 {
 "name": "webbbs",
 "main": "webbbs.js",
-"version": "0.0.4",
+"version": "0.0.5",
 "description": "Fidonet WebBBS application module for Express.js web server.",
 "keywords": ["fido", "fidonet", "bbs", "webbbs", "express", "expressjs", "express-js", "express.js"],
 "author": { "name": "Mithgol the Webmaster" },
@@ -12,20 +12,20 @@
 },
 "dependencies": {
    "client-sessions": "~0.7.0",
-   "express-handlebars": "~2.0.1",
+   "express-handlebars": "~3.0.0",
    "extend": "~3.0.0",
    "fghi-url": "~0.5.0-pre.5",
-   "fido2rss": "~0.8.1",
+   "fido2rss": "~2.0.5",
    "fidoconfig": "~0.2.2",
-   "fidohtml": "~0.19.7",
+   "fidohtml": "~1.3.2",
    "fidonet-jam": "~3.8.8",
-   "font-awesome": "~4.4.0",
-   "ftp-fileecho-list": "~2.0.4",
-   "jquery": "1.11.3",
+   "font-awesome": "~4.6.1",
+   "ftp-fileecho-list": "~3.0.0",
+   "jquery": "2.2.3",
    "mime": "~1.3.4",
-   "nodelist": "~1.1.6",
+   "nodelist": "~2.0.1",
    "simteconf": "~0.6.12",
-   "uue": "~2.1.1"
+   "uue": "~3.0.0"
 },
 "peerDependencies": {
    "express": "4.x"

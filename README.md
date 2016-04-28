@@ -2,6 +2,8 @@ This module provides a **WebBBS** interface to echomail areas of Fidonet.
 
 This module is a web application for the [Express.js](http://expressjs.com/) web server.
 
+This module requires Node.js version 4.2.2 (or newer) because the newer versions of IPFS API [require it.](https://github.com/ipfs/js-ipfs-api/pull/172) It also uses some ECMAScript 2015 features.
+
 **Note:**   the module is currently in an early phase of its development and thus does not have even minimal feature completeness.
 
 ## Installing the WebBBS module
