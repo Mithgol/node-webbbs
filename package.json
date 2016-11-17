@@ -15,7 +15,7 @@
    "express-handlebars": "~3.0.0",
    "extend": "~3.0.0",
    "fghi-url": "~0.5.0-pre.5",
-   "fido2rss": "~2.1.0",
+   "fido2rss": "~3.0.1",
    "fidoconfig": "~0.2.2",
    "fidohtml": "~1.3.2",
    "fidonet-jam": "~3.8.8",
